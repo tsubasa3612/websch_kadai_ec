@@ -1,0 +1,19 @@
+<body>
+
+	<% if current_admin.id == @admin.id %>
+	  <%= link_to 'Edit Profile', edit_admin_registration_path, :class => 'btn btn-info' %>
+	<% end %>
+
+
+	<h1><%= @admin[:name] %></h1>
+
+
+	<p>
+		<% @admin.products.each do |product| %>
+		  <%= link_to product.name, product_path(product) %><br>
+		<% end %>
+	</p>
+
+
+
+</body>

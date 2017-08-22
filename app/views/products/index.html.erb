@@ -1,0 +1,48 @@
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+<%= render_breadcrumbs separator: ' > ' %><br><br>
+
+<!-- kaminari追加箇所開始 -->
+<%= page_entries_info @products %>
+<!-- kaminari追加箇所終了 -->
+
+<br><br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:price) %></th>
+      <th><%= model_class.human_attribute_name(:descreption) %></th>
+      <th><%= model_class.human_attribute_name(:image) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.id, product_path(product) %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.descreption %></td>
+        <td>
+
+        </td>
+        <td><%=l product.created_at %></td>
+        <td>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- kaminari追加箇所開始 -->
+<%= paginate @products %>
+<!-- kaminari追加箇所終了 -->
+
+

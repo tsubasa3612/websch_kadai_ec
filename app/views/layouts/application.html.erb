@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebschKadaiEc</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <h1>
+  <%= link_to "EC Sample", products_path %>
+  </h1>
+
+    <% if user_signed_in? %>
+      Logged in as <%= current_user.email %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'btn btn-info'  %>
+    <% elsif admin_signed_in? %>
+      Logged in as <%= current_admin.email %>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, :class => 'btn btn-info'  %>
+      <%= link_to t('.new', :default => t("helpers.links.new")),
+            new_product_path,
+            :class => 'btn btn-primary' %>
+    <% else %>
+
+      <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-info'  %> 
+      <%= link_to "Sign In", new_user_session_path, :class => 'btn btn-info'  %> as <strong>User</strong>
+
+      <%= link_to "Sign Up", new_admin_registration_path, :class => 'btn btn-info'  %> 
+      <%= link_to "Sign In", new_admin_session_path, :class => 'btn btn-info'  %> as <strong>Admin</strong>
+    <% end %>
+
+
+
+    <%= yield %>
+  </body>
+</html>
