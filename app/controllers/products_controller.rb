@@ -11,8 +11,8 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @cart_item = @product.cart_items
     add_breadcrumb "Product", :products_path
+    binding.pry
   end
 
   # GET /products/new
