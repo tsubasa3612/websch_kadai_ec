@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :purchase, :update, :destroy]
   add_breadcrumb "Products Top", :products_path
 
   # GET /products
@@ -12,8 +12,12 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     add_breadcrumb "Product", :products_path
-    binding.pry
+    # binding.pry
   end
+
+  def purchase
+  end
+
 
   # GET /products/new
   def new

@@ -9,6 +9,9 @@ class CartsController < ApplicationController
     	@cart_item = Cart_items.new
     end
 
+    def purchase
+    end
+
     def add_item
     	if @cart_item.blank?
     	  @cart_item = current_cart.cart_items.build(product_id: params[:product_id])

@@ -27,14 +27,11 @@
     <%= link_to @product.admin_name, admins_show_path(@product.admin_name) %>
   </p>
 
-      <%#= form_for(@cart_item, url: { controller: :carts, action: :add_item, method: :post}) do |l| %>
-      <%= form_for @product, url: add_item_path, method: :post do |p| %>
-        <%= p.hidden_field :id, :value => @product.id %>
-        <%= p.number_field_tag 'quantity', nil, in: 1...10 %>
+      <%= form_for @product, :url => { :controller => 'purchases', :action => 'new' } do |p| %>
+        <%= p.hidden_field :product_id, :value => @product.id %>
+        <%= p.hidden_field :product_name, :value => @product.name %>
         <%= p.submit "カートに入れる", :class => 'btn btn-info' %>
       <% end %><br>
-
-  <!-- <%= link_to "add to cart", add_item_path, method: :post, :class => 'btn btn-info' %><br><br> -->
 
     <%= link_to t('.back', :default => t("helpers.links.back")),
                   products_path, :class => 'btn btn-default'  %>

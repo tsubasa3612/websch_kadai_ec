@@ -1,0 +1,40 @@
+
+<br>
+
+<h2>購入情報入力画面</h2>
+
+<br>
+<br>
+
+
+<%= form_for @purchase, :url => purchases_confirm_path(@purchase) do |f| %>
+
+	<div>
+		<%= f.label :name %>
+		<%= f.text_field :name, :class => "form-control" %>
+	</div>
+
+	<div>
+		<%= f.label :mail %>
+		<%= f.email_field :mail, :class => "form-control" %>
+	</div>
+
+	<div>
+		<%= f.label :address %>
+		<%= f.text_field :address, :class => "form-control" %>
+	</div>
+
+	<div>
+		<%= f.label :tel %>
+		<%= f.text_field :tel, :class => "form-control" %>
+	</div>
+
+	<%= f.hidden_field :user_id, :value => @current_user_id %>
+	<%= f.hidden_field :user_name, :value => @current_user_name %>
+
+	<br><br>
+	<div>
+		<%= f.submit class: 'btn', :class => 'form-control btn-info' %>
+	</div>
+
+<% end %>

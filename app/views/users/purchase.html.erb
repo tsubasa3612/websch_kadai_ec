@@ -1,0 +1,35 @@
+<h1>Users#purchase</h1>
+<p>Find me in app/views/users/purchase.html.erb</p>
+
+<p>
+購入商品
+</p>
+
+
+
+<%= form_for @user, :url => {:action => 'confirm'} do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tel %><br />
+    <%= f.text_field :tel, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "購入確認画面へ進む" %>
+  </div>
+<% end %>
